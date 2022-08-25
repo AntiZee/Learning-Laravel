@@ -13,6 +13,8 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // User::factory(10)->create();
+        DB::table('students')->insert([
+            'student_name' => Str::random(10)
+        ]);
     }
 }
