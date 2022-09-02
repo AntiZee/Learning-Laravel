@@ -2,11 +2,12 @@
 
 namespace App\Services\Impl;
 
-use App\Services\StudentService;
+use App\Services\UserService;
 
-class StudentImpl implements StudentService
+class UserImpl implements UserService
 {
     private array $users = [
+        'admin' => 'admin0',
         'student' => 'student0'
     ];
     function login(string $user, string $pass): bool

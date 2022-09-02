@@ -2,7 +2,7 @@
 
 namespace App\Services;
 
-interface StudentService
+interface UserService
 {
     function login(string $user, string $pass): bool;
 }
