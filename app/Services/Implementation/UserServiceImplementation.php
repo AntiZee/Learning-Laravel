@@ -7,9 +7,8 @@ use App\Services\UserService;
 class UserServiceImplementation implements UserService
 {
     private array $users = [
-        'Alfa' => 'Alfa0',
-        'Beta' => 'Beta0',
-        'Gamma' => 'Gamma0'
+        'Admin' => 'Admin0',
+        'Student' => 'Student0'
     ];
     function login(string $user, string $pass): bool
     {
