@@ -17,3 +17,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::view('/template', 'template');
+Route::controller(AdminController::class)->group(function () {
+    Route::get('/login', 'login');
+    Route::post('/login', 'doLogin');
+    Route::get('/logout', 'doLogout');
+});
+Route::controller(StudentController::class)->group(function () {
+    Route::get('/login', 'login');
+    Route::post('/login', 'doLogin');
+    Route::get('/logout', 'doLogout');
+});
