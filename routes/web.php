@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\TodolistController;
 use App\Http\Middleware\AdminMiddleware;
 use App\Http\Middleware\StudentMiddleware;
 use Illuminate\Support\Facades\Route;
@@ -28,4 +29,9 @@ Route::controller(StudentController::class)->group(function () {
     Route::get('/login', 'login')->middleware([StudentMiddleware::class]);
     Route::post('/login', 'doLogin')->middleware([StudentMiddleware::class]);
     Route::get('/logout', 'doLogout')->middleware([StudentMiddleware::class]);
+});
+Route::controller(TodolistController::class)->middleware([AdminMiddleware::class])->group(function () {
+    Route::get('/todolist', 'todolist');
+    Route::post('/todolist', 'addTodo');
+    Route::post('/todolist/{id}/delete', 'removeTodo');
 });
