@@ -20,15 +20,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::view('/template', 'template');
-Route::controller(AdminController::class)->group(function () {
-    Route::get('/login', 'login')->middleware([AdminMiddleware::class]);
-    Route::post('/login', 'doLogin')->middleware([AdminMiddleware::class]);
-    Route::get('/logout', 'doLogout')->middleware([AdminMiddleware::class]);
-});
-Route::controller(StudentController::class)->group(function () {
-    Route::get('/login', 'login')->middleware([StudentMiddleware::class]);
-    Route::post('/login', 'doLogin')->middleware([StudentMiddleware::class]);
-    Route::get('/logout', 'doLogout')->middleware([StudentMiddleware::class]);
+Route::controller(UserController::class)->group(function () {
+    Route::get('/login', 'login')->middleware([AdminMiddleware::class, StudentMiddleware::class]);
+    Route::post('/login', 'doLogin')->middleware([AdminMiddleware::class, StudentMiddleware::class]);
+    Route::get('/logout', 'doLogout')->middleware([AdminMiddleware::class, StudentMiddleware::class]);
 });
 Route::controller(TodolistController::class)->middleware([AdminMiddleware::class])->group(function () {
     Route::get('/todolist', 'todolist');

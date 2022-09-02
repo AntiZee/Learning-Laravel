@@ -2,17 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Services\StudentService;
+use App\Services\UserService;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
-class StudentController extends Controller
+class UserController extends Controller
 {
-    private StudentService $studentService;
-    public function __construct(StudentService $studentService)
+    private UserService $userService;
+    public function __construct(UserService $userService)
     {
-        $this->studentService = $studentService;
+        $this->userService = $userService;
     }
     public function login(): Response
     {
@@ -30,7 +30,7 @@ class StudentController extends Controller
                 'error' => 'User or password is required'
             ]);
         }
-        if ($this->studentService->login($user, $pass)) {
+        if ($this->userService->login($user, $pass)) {
             $request->session()->put('user', $user);
             return redirect('/');
         }
